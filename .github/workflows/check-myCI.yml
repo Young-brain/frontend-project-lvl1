@@ -1,0 +1,11 @@
+name: 'test lint'
+on:
+  push:
+  pull-request:
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: 'lint'
+        run: make lint
