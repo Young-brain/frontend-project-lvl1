@@ -1,6 +1,6 @@
 {
-  "name": "ld-brain-games.js",
-  "version": "1.0.0",
+  "name": "ld-brain-games",
+  "version": "1.0.3",
   "description": "[![Actions Status](https://github.com/Young-brain/frontend-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/Young-brain/frontend-project-lvl1/actions)",
   "main": "index.js",
   "type": "module",
