@@ -1,7 +1,6 @@
 name: 'test lint'
 on:
   push:
-  pull-request:
 
 jobs:
   test-job:
