@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "bin": {
-    "ld-brain-games": "bin/ld-brain-games.js"
+    "ld-brain-games": "bin/ld-brain-games.js",
+    "ld-brain-even": "bin/ld-brain-even.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
