@@ -1,41 +1,44 @@
 import readlineSync from 'readline-sync';
 import { name } from './cli.js';
-import { getRandomInt } from "./common.js";
+import {
+  getRandomInt, echoCorrect, wrongAnswer, gameOver, success,
+} from './common.js';
 
-export const expressionQuestion = () => {
-    let i;
-    
-    for (i=0; i < 1; i += 1) {
-        let n;
-        let arrOperator = ['+', '-', '*'];
-        for (n=0; n < arrOperator.length; n += 1) {
-            let one = getRandomInt();
-            let two = getRandomInt();
-            const answer = readlineSync.question(`Question ${one} ${arrOperator[n]} ${two}:`);
-            let rightAnswer;
-            function computation() {
-                if (arrOperator[n] === '+') {
-                    rightAnswer = one + two;
-                    return one + two;
-                }
-                if (arrOperator[n] === '-') {
-                    rightAnswer = one - two;
-                    return one - two;
-                }
-                if (arrOperator[n] === '*') {
-                    rightAnswer = one * two;
-                    return one * two;
-                }
-            }
-            if (arrOperator[n] && answer == computation()) {
-                console.log('Correct!')
-                
-            } else {
-                console.log(`${answer}' is wrong answer. Corrrect answer was '${rightAnswer}'!`);
-                return console.log(`Let's try again, ${name}!`);
-            }
-            
+const expressionQuestion = () => {
+  let i;
+
+  for (i = 0; i < 1; i += 1) {
+    let n;
+    const arrOperator = ['+', '-', '*'];
+    for (n = 0; n < arrOperator.length; n += 1) {
+      const one = getRandomInt();
+      const two = getRandomInt();
+      const answer = readlineSync.question(`Question ${one} ${arrOperator[n]} ${two}:`);
+      let rightAnswer;
+      function computation() {
+        if (arrOperator[n] === '+') {
+          rightAnswer = one + two;
+          return rightAnswer;
         }
-        return console.log(`Congratulations, ${name}!`)
+        if (arrOperator[n] === '-') {
+          rightAnswer = one - two;
+          return rightAnswer;
+        }
+        if (arrOperator[n] === '*') {
+          rightAnswer = one * two;
+          return rightAnswer;
+        }
+        return null;
+      }
+      if (arrOperator[n] && answer == computation()) {
+        echoCorrect();
+      } else {
+        wrongAnswer(answer, rightAnswer);
+        return gameOver(name);
+      }
     }
-}
+  }
+  return success(name);
+};
+
+export default expressionQuestion;

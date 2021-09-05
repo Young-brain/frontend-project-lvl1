@@ -1,6 +1,8 @@
 import readlineSync from 'readline-sync';
 import { name } from './cli.js';
-import { getRandomInt } from './common.js';
+import {
+  getRandomInt, echoCorrect, wrongAnswer, gameOver, success,
+} from './common.js';
 
 const numberQestions = () => {
   let i;
@@ -14,19 +16,19 @@ const numberQestions = () => {
     const answer = readlineSync.question(`Question ${num[i]}:`);
     let rightAnswer;
     if (answer === 'yes' && num[i] % 2 === 0) {
-      console.log('correct');
+      echoCorrect();
     } else if (answer === 'no' && num[i] % 2 !== 0) {
-      console.log('correct');
+      echoCorrect();
     } else {
       if (num[i] % 2 === 0) {
         rightAnswer = 'yes';
       } else if (num[i] % 2 !== 0) {
         rightAnswer = 'no';
       }
-      console.log(`'${answer}' is wrong answer. Corrrect answer was '${rightAnswer}'!`);
-      return console.log(`Let's try again, ${name}!`);
+      wrongAnswer(answer, rightAnswer);
+      return gameOver(name);
     }
   }
-  return console.log(`Congratulations, ${name}!`);
+  return success(name);
 };
 export default numberQestions;
