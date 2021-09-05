@@ -31,7 +31,7 @@ export const expressionQuestion = () => {
                 console.log('Correct!')
                 
             } else {
-                console.log(`'${answer}' is wrong answer. Corrrect answer was '${rightAnswer}'!`);
+                console.log(`${answer}' is wrong answer. Corrrect answer was '${rightAnswer}'!`);
                 return console.log(`Let's try again, ${name}!`);
             }
             
